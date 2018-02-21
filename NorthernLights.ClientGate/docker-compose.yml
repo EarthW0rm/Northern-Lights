@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  clientgate.broker:
+    image: clientgate.broker
+    build:
+      context: .
+      dockerfile: ClientGate.Broker/Dockerfile
+    networks:
+      - clientgate
+
+  clientgate.api:
+    image: clientgate.api
+    build:
+      context: .
+      dockerfile: ClientGate.Api/Dockerfile
+    networks:
+      clientgate:
+        aliases:
+          - clientgate.api
+networks:
+  clientgate:
+    driver: bridge 
