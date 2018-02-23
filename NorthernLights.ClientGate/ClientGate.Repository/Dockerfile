@@ -1,4 +1,5 @@
 FROM microsoft/mssql-server-linux:2017-GDR
+MAINTAINER Marco Faustino
 EXPOSE 1433
 
 ENV MSSQL_SA_PASSWORD=p@ssw0rd
