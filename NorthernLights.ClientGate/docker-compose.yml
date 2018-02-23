@@ -1,23 +1,33 @@
 version: '3'
 
 services:
+  clientgate.repository:
+    image: microsoft/mssql-server-linux:2017-GDR
+    environment:
+      - SA_PASSWORD="p@ssw0rd"
+      - ACCEPT_EULA="Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - back-network
   clientgate.broker:
     image: clientgate.broker
     build:
       context: .
       dockerfile: ClientGate.Broker/Dockerfile
     networks:
-      - clientgate
+      - front-network
 
   clientgate.api:
     image: clientgate.api
     build:
       context: .
       dockerfile: ClientGate.Api/Dockerfile
+    depends_on:
+      - clientgate.repository      
     networks:
-      clientgate:
-        aliases:
-          - clientgate.api
+      - back-network
+      - front-network
 networks:
-  clientgate:
-    driver: bridge 
+  front-network:
+  back-network:
