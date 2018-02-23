@@ -2,10 +2,14 @@ version: '3'
 
 services:
   clientgate.repository:
-    image: microsoft/mssql-server-linux:2017-GDR
+    image: clientgate.repository
+    build:
+      context: ./ClientGate.Repository/
+      dockerfile: ClientGate.Repository/Dockerfile
     environment:
       - SA_PASSWORD=p@ssw0rd
       - ACCEPT_EULA=Y
+
     ports:
       - "1433:1433"
     networks:
@@ -17,13 +21,14 @@ services:
       context: .
       dockerfile: ClientGate.Api/Dockerfile
     ports:
-      - "8080:80"
+      - "8081:80"
     depends_on:
-      - clientgate.repository      
+      - clientgate.repository
     networks:
       - db-network
       - front-network
-
+    environment:
+      - CONNECTIONSTRING=Password=p@ssw0rd;Persist Security Info=True;User ID=sa;Initial Catalog=NL_CLIENTGATE;Data Source=clientgate.repository
 
   clientgate.broker:
     image: clientgate.broker
@@ -34,8 +39,6 @@ services:
       - "8080:80"
     networks:
       - front-network
-
-
 
 networks:
   front-network:
