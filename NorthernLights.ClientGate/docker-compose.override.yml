@@ -4,11 +4,7 @@ services:
   clientgate.broker:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "8080:80"
 
   clientgate.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "8081:80"
