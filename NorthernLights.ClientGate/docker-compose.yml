@@ -1,17 +1,26 @@
 version: '3'
 
 services:
-  clientgate.repository:
-    image: clientgate.repository
+  clientgate.repository.mssql:
+    image: clientgate.repository.mssql
     build:
-      context: ./ClientGate.Repository/
-      dockerfile: ClientGate.Repository/Dockerfile
+      context: ./ClientGate.Repository/docker/sql-server/
+      dockerfile: Dockerfile
     environment:
       - SA_PASSWORD=p@ssw0rd
       - ACCEPT_EULA=Y
-
     ports:
       - "1433:1433"
+    networks:
+      - db-network
+
+  clientgate.repository.mongodb:
+    image: clientgate.repository.mongodb
+    build:
+      context: ./ClientGate.Repository/docker/mongo-db/
+      dockerfile: Dockerfile
+    ports:
+      - "27017:27017"
     networks:
       - db-network
 
@@ -23,12 +32,12 @@ services:
     ports:
       - "8081:80"
     depends_on:
-      - clientgate.repository
+      - clientgate.repository.mssql
     networks:
       - db-network
       - front-network
     environment:
-      - CONNECTIONSTRING=Password=p@ssw0rd;Persist Security Info=True;User ID=sa;Initial Catalog=NL_CLIENTGATE;Data Source=clientgate.repository
+      - CONNECTIONSTRING=Password=p@ssw0rd;Persist Security Info=True;User ID=sa;Initial Catalog=NL_CLIENTGATE;Data Source=clientgate.repository.mssql
 
   clientgate.broker:
     image: clientgate.broker
