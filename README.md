@@ -1,6 +1,15 @@
 ﻿# Introduction 
 Esse projeto tem o intuito de implementar insites quanto a novas tecnologias a fim de produzir uma aplicacao SaaS que até o momtento te um foco de negocio desconhecido.
 
+#Controle de Versao e Build
+Esse projeto aplica continuous integration, o pull de commits é efetuado em 2 repositorios diferentes um no visual tfs online e outro no github
+https://github.com/EarthW0rm/Northern-Lights.git
+
+O projeto github é utilizado para integracao com o docker cloud.
+https://hub.docker.com/r/earthworm013
+
+No futuro pretendo havilitar o swarm para integrar a publicacao com o Azure.
+
 #Modulos Propostos
 1.  NorthernLights.ClientGate
     Esse modulo será responsável pela autenticacao de usuários;
