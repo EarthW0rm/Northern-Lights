@@ -11,7 +11,6 @@ O projeto github é utilizado para integracao com o docker cloud.
 
 No futuro pretendo havilitar o swarm para integrar a publicacao com o Azure.
 
-```mermaid
 sequenceDiagram
 Dev ->> GitHub: git push
 Docker -->> GitHub: new commits?
@@ -20,7 +19,6 @@ Docker ->> GitHub: git pull
 GitHub -->> Docker: new commits
 Docker ->> Docker: docker build
 Docker ->> DockerHub: publish tag:dev
-```
 
 ##Modulos Propostos
 1.  NorthernLights.ClientGate
