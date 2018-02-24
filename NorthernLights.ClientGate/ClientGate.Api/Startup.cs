@@ -27,7 +27,7 @@ namespace ClientGate.Api
         {
             services.AddMvc();
             string connString = Environment.GetEnvironmentVariable("CONNECTIONSTRING");
-            services.AddDbContext<ClientGateContext>(options => options.UseSqlServer(connString));
+            services.AddDbContext<ClientGateSqlContext>(options => options.UseSqlServer(connString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

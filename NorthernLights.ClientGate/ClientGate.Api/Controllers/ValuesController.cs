@@ -9,9 +9,9 @@ namespace ClientGate.Api.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        private readonly Repository.ClientGateContext _context;
+        private readonly Repository.ClientGateSqlContext _context;
 
-        public ValuesController(Repository.ClientGateContext context)
+        public ValuesController(Repository.ClientGateSqlContext context)
         {
             _context = context;
         }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ClientGate.Repository
 {
-    public class ClientGateContext : DbContext
+    public class ClientGateSqlContext : DbContext
     {
-        public ClientGateContext(DbContextOptions<ClientGateContext> options)
+        public ClientGateSqlContext(DbContextOptions<ClientGateSqlContext> options)
             : base(options)
         {
             this.Database.EnsureCreated();
