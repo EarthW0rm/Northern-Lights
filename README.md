@@ -3,6 +3,7 @@ Esse projeto tem o intuito de implementar insites quanto a novas tecnologias a f
 
 #Controle de Versao e Build
 Esse projeto aplica continuous integration, o pull de commits é efetuado em 2 repositorios diferentes um no visual tfs online e outro no github
+https://faustino.visualstudio.com/_git/Northern%20Lights%20Project
 https://github.com/EarthW0rm/Northern-Lights.git
 
 O projeto github é utilizado para integracao com o docker cloud.
