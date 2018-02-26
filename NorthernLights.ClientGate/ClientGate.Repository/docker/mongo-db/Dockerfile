@@ -23,4 +23,4 @@ RUN mongod --bind_ip_all --quiet & \
 	&& mongo --eval "load('/data/mongo_initial_script.js');" \
 	&& mongod --shutdown
 EXPOSE 27017
-CMD ["mongod", "--bind_ip_all"]
+CMD ["mongod", "--auth", "--bind_ip_all"]
